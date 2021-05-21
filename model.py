@@ -1,16 +1,23 @@
-import pygame, cubic
+import pygame, time,  cubic, settings
 pygame.init()
 
+
 group = pygame.sprite.Group()
-for i in range(50, 700, 52):
-    a = cubic.Cub(i + 70, i + 52)
-    group.add(a)
+
+coin = 0
+
+def create_level_1():
+    colums = 5
+
+    start = int(settings.SCREEN_WIDTH / 2) - int(colums / 2 * cubic.Cub.CUBIC_SIZE_W)
+    stop = int(settings.SCREEN_WIDTH / 2) + int(colums / 2 * cubic.Cub.CUBIC_SIZE_W)
+    step = cubic.Cub.CUBIC_SIZE_W + 2
+
+    for p in range(start, stop, step):
+        for i in range(0, settings.SCREEN_HEIGHT - cubic.Cub.CUBIC_SIZE_H, cubic.Cub.CUBIC_SIZE_H + 2):
+
+            a = cubic.Cub(p, i)
+            group.add(a)
 
 
-n = 750
-for i in range(724, 100, -52):
-    n += 52
-    i -= 52
-    a = cubic.Cub(n, i)
-    group.add(a)
 
