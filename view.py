@@ -1,12 +1,10 @@
-import pygame, settings, model
+import pygame, settings, model, cubic
 pygame.init()
 
 screen = pygame.display.set_mode([settings.SCREEN_WIDTH, settings.SCREEN_HEIGHT])
 
 
 f = pygame.font.SysFont("arial", 50, True)
-
-
 
 
 
