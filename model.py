@@ -23,7 +23,7 @@ def create_level_1():
     for p in range(start, stop, step):
         for i in range(0, settings.SCREEN_HEIGHT - cubic.Cub.CUBIC_SIZE_H, cubic.Cub.CUBIC_SIZE_H + 2):
 
-            a = cubic.Cub(p, i, random.randint(1, 10))
+            a = cubic.Cub(p, i, random.randint(1, 10), random.choice([True, False]))
             cub_list.append(a)
             group.add(a)
 
@@ -31,10 +31,13 @@ def create_level_1():
 
 
 def always():
+    global coin
+
+    coin += b.fly(cub_list)
+
+    coin += c.fly(cub_list)
 
 
-    b.fly(cub_list)
-    c.fly(cub_list)
 
 
 

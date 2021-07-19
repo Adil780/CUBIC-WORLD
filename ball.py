@@ -20,6 +20,7 @@ class Ball(DirtySprite):
         print(1)
 
     def fly(self, cub):
+        l = 0
 
         self.rect.x += self.speedx
 
@@ -36,6 +37,7 @@ class Ball(DirtySprite):
             a = self.rect.colliderect(i)
 
             if a:
+                l += 1
                 if self.speedx > 0:
                     self.rect.right = i.rect.left
                     i.minus_hp(cub)
@@ -43,6 +45,7 @@ class Ball(DirtySprite):
                 elif self.speedx < 0:
                     self.rect.left = i.rect.right
                     i.minus_hp(cub)
+
 
 
                 self.speedx = -self.speedx
@@ -64,6 +67,7 @@ class Ball(DirtySprite):
             c = self.rect.colliderect(b)
 
             if c:
+                l += 1
                 if self.speedy < 0:
                     self.rect.top = b.rect.bottom
                     b.minus_hp(cub)
@@ -72,6 +76,8 @@ class Ball(DirtySprite):
                     b.minus_hp(cub)
 
                 self.speedy = -self.speedy
+
+        return l
 
 
 
