@@ -11,11 +11,18 @@ def events():
             exit()
         if i.type == pygame.MOUSEBUTTONDOWN and i.button == pygame.BUTTON_LEFT:
             pos = i.pos
-            b = model.group.sprites()
-            for v in b:
+
+            g = model.button_buy.collidepoint(pos)
+
+            if g:
+                model.buy_ball()
+
+
+            for v in model.cub_list:
                 if v.rect.collidepoint(pos):
                     v.minus_hp(model.cub_list)
                     model.coin += 1
+
 
 
 

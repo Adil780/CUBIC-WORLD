@@ -36,8 +36,10 @@ class Ball(DirtySprite):
         for i in cub:
             a = self.rect.colliderect(i)
 
-            if a:
+            if a and not i.defended:
                 l += 1
+
+            if a:
                 if self.speedx > 0:
                     self.rect.right = i.rect.left
                     i.minus_hp(cub)
@@ -66,8 +68,11 @@ class Ball(DirtySprite):
         for b in cub:
             c = self.rect.colliderect(b)
 
-            if c:
+            if c and not b.defended:
                 l += 1
+
+
+            if c:
                 if self.speedy < 0:
                     self.rect.top = b.rect.bottom
                     b.minus_hp(cub)
@@ -76,6 +81,8 @@ class Ball(DirtySprite):
                     b.minus_hp(cub)
 
                 self.speedy = -self.speedy
+
+
 
         return l
 
